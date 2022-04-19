@@ -1,14 +1,15 @@
 from django.shortcuts import render
+from utils.recipes.factory import make_recipe
 
 
 def home(request):
     return render(request, 'recipes/pages/home.html', context={
-        'name': 'Pedro Santos Barrios'
+        'recipes': [make_recipe() for _ in range(10)],
     })
     #return HTTP response
 
 def recipe(request, id):
     return render(request, 'recipes/pages/recipe-view.html', context={
-        'name': 'Pedro Santos Barrios'
+        'recipe': make_recipe(),
     })
 
